@@ -1,0 +1,1112 @@
+{
+  "info": {
+    "_postman_id": "8e69ed73-c6c5-4082-9bc2-d21b0257ba7d",
+    "name": "edge-rates-server",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Rainy Day",
+      "item": [
+        {
+          "name": "4XX Errors",
+          "item": [
+            {
+              "name": "exchangeRate/emptyQuery",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Empty params test\", function () {",
+                      "    pm.response.to.have.body('Missing Request fields.');",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{ratesUrl}}/exchangeRate/",
+                  "host": ["{{ratesUrl}}"],
+                  "path": ["exchangeRate", ""]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "exchangeRate/badQueryFormat",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const errorResponse = {\"error\":{\"message\":\"Endpoint not found\",\"errorType\":\"bad_query\",\"errorCode\":404}}",
+                      "",
+                      "const jsonData = pm.response.json()",
+                      "",
+                      "pm.test(\"Error response test\", function () {",
+                      "    pm.expect(jsonData).to.eql(errorResponse)",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{ratesUrl}}/exchangeRate/q34oiufblkjeb",
+                  "host": ["{{ratesUrl}}"],
+                  "path": ["exchangeRate", "q34oiufblkjeb"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "exchangeRate/missingCurrencyPairQueryField",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Empty params test\", function () {",
+                      "    pm.response.to.have.body('Missing Request fields.');",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{ratesUrl}}/exchangeRate/?date=09-01-21",
+                  "host": ["{{ratesUrl}}"],
+                  "path": ["exchangeRate", ""],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "09-01-21"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "exchangeRates/emptyQuery",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Empty params test\", function () {",
+                      "    pm.response.to.have.body('Missing Request fields.');",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{ratesUrl}}/exchangeRates/",
+                  "host": ["{{ratesUrl}}"],
+                  "path": ["exchangeRates", ""]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "exchangeRates/badQueryFormat",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Empty params test\", function () {",
+                      "    pm.response.to.have.body('Missing Request fields.');",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"eiubrvaeilsvdk\": \"ieoburvalis\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ratesUrl}}/exchangeRates/",
+                  "host": ["{{ratesUrl}}"],
+                  "path": ["exchangeRates", ""]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "exchangeRates/bigQuery",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Empty params test\", function () {",
+                      "    pm.response.to.have.body('Exceeded Limit of 100');",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"data\": [\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ratesUrl}}/exchangeRates/",
+                  "host": ["{{ratesUrl}}"],
+                  "path": ["exchangeRates", ""]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "exchangeRates/formDataQuery",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Empty params test\", function () {",
+                      "    pm.response.to.have.body('Missing Request fields.');",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "currency_pair",
+                      "value": "ETH_BTC",
+                      "type": "text"
+                    },
+                    {
+                      "key": "date",
+                      "value": "09-01-21",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ratesUrl}}/exchangeRates/",
+                  "host": ["{{ratesUrl}}"],
+                  "path": ["exchangeRates", ""]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "exchangeRates/xWwwFormUrlencodedQuery",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Empty params test\", function () {",
+                      "    pm.response.to.have.body('Missing Request fields.');",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "currency_pair",
+                      "value": "BTC_ETH",
+                      "type": "text"
+                    },
+                    {
+                      "key": "date",
+                      "value": "09-01-21",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ratesUrl}}/exchangeRates/",
+                  "host": ["{{ratesUrl}}"],
+                  "path": ["exchangeRates", ""]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "exchangeRates/binaryQuery",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Empty params test\", function () {",
+                      "    pm.response.to.have.body('Missing Request fields.');",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "file",
+                  "file": {
+                    "src": "binaryQuery.txt"
+                  },
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ratesUrl}}/exchangeRates/",
+                  "host": ["{{ratesUrl}}"],
+                  "path": ["exchangeRates", ""]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "exchangeRates/graphQLQuery",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Empty params test\", function () {",
+                      "    pm.response.to.have.body('Missing Request fields.');",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "graphql",
+                  "graphql": {
+                    "query": "{\n    currency_pair\n    date\n}",
+                    "variables": ""
+                  },
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ratesUrl}}/exchangeRates/",
+                  "host": ["{{ratesUrl}}"],
+                  "path": ["exchangeRates", ""]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "exchangeRates/textQuery",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Empty params test\", function () {",
+                      "    pm.response.to.have.body('Missing Request fields.');",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"data\": [\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "text"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ratesUrl}}/exchangeRates/",
+                  "host": ["{{ratesUrl}}"],
+                  "path": ["exchangeRates", ""]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "exchangeRates/javascriptQuery",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Empty params test\", function () {",
+                      "    pm.response.to.have.body('Missing Request fields.');",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    data: [\n        {\n            currency_pair: \"BTC_ETH\",\n            date: \"09-01-21\"\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "javascript"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ratesUrl}}/exchangeRates/",
+                  "host": ["{{ratesUrl}}"],
+                  "path": ["exchangeRates", ""]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "exchangeRates/htmlQuery",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Empty params test\", function () {",
+                      "    pm.response.to.have.body('Missing Request fields.');",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"data\": [\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "html"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ratesUrl}}/exchangeRates/",
+                  "host": ["{{ratesUrl}}"],
+                  "path": ["exchangeRates", ""]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "exchangeRates/xmlQuery",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Empty params test\", function () {",
+                      "    pm.response.to.have.body('Missing Request fields.');",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"data\": [\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ratesUrl}}/exchangeRates/",
+                  "host": ["{{ratesUrl}}"],
+                  "path": ["exchangeRates", ""]
+                }
+              },
+              "response": []
+            }
+          ],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [""]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status test\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([400, 404])",
+                  "})"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "2XX Errors",
+          "item": [
+            {
+              "name": "exchangeRate/badCurrencyPairQuery",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const errorResponse = \"currency_pair query param malformed.  should be [curA]_[curB], ex: \\\"ETH_iso:USD\\\"\"",
+                      "",
+                      "const errorData = pm.response.json().error.message",
+                      "",
+                      "pm.test(\"Error response test\", function () {",
+                      "    pm.expect(errorData).to.eql(errorResponse)",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{ratesUrl}}/exchangeRate/?currencyPair=w43bo8vubus",
+                  "host": ["{{ratesUrl}}"],
+                  "path": ["exchangeRate", ""],
+                  "query": [
+                    {
+                      "key": "currencyPair",
+                      "value": "w43bo8vubus"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "exchangeRate/badCurrencyPairQueryGoodFormat",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const schema = {",
+                      "    \"type\": \"object\",",
+                      "    \"properties\": {",
+                      "        \"currency_pair\": { \"type\": \"string\" },",
+                      "        \"date\": { \"type\": \"string\" },",
+                      "        \"exchangeRate\": { \"type\": \"null\" },",
+                      "    },",
+                      "    \"required\": [\"currency_pair\", \"date\", \"exchangeRate\"],",
+                      "    \"additionalProperties\": false",
+                      "}",
+                      "",
+                      "pm.test('Schema is valid', function() {",
+                      "  pm.response.to.have.jsonSchema(schema)",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{ratesUrl}}/exchangeRate/?currencyPair=123_123",
+                  "host": ["{{ratesUrl}}"],
+                  "path": ["exchangeRate", ""],
+                  "query": [
+                    {
+                      "key": "currencyPair",
+                      "value": "123_123"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "exchangeRate/badQueryFieldData",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const errorResponse = \"date query param malformed.  should be conventional date string, ex:\\\"2019-11-21T15:28:21.123Z\\\"\"",
+                      "",
+                      "const errorData = pm.response.json().error.message",
+                      "",
+                      "pm.test(\"Error response test\", function () {",
+                      "    pm.expect(errorData).to.eql(errorResponse)",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{ratesUrl}}/exchangeRate/?currencyPair=123_123&date=21-21-21",
+                  "host": ["{{ratesUrl}}"],
+                  "path": ["exchangeRate", ""],
+                  "query": [
+                    {
+                      "key": "currencyPair",
+                      "value": "123_123"
+                    },
+                    {
+                      "key": "date",
+                      "value": "21-21-21"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "exchangeRate/goodCurrencyPairBadDate",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const errorResponse = \"date query param malformed.  should be conventional date string, ex:\\\"2019-11-21T15:28:21.123Z\\\"\"",
+                      "",
+                      "const errorData = pm.response.json().error.message",
+                      "",
+                      "pm.test(\"Error response test\", function () {",
+                      "    pm.expect(errorData).to.eql(errorResponse)",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{ratesUrl}}/exchangeRate/?currencyPair=BTC_ETH&date=21-21-21",
+                  "host": ["{{ratesUrl}}"],
+                  "path": ["exchangeRate", ""],
+                  "query": [
+                    {
+                      "key": "currencyPair",
+                      "value": "BTC_ETH"
+                    },
+                    {
+                      "key": "date",
+                      "value": "21-21-21"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [""]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status test\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200])",
+                  "})"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sunny Day",
+      "item": [
+        {
+          "name": "exchangeRate/missingDateQueryField",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const schema = {",
+                  "    \"type\": \"object\",",
+                  "    \"properties\": {",
+                  "        \"currency_pair\": { \"type\": \"string\" },",
+                  "        \"date\": { \"type\": \"string\" },",
+                  "        \"exchangeRate\": { \"type\": \"string\" },",
+                  "    },",
+                  "    \"required\": [\"currency_pair\", \"date\", \"exchangeRate\"],",
+                  "    \"additionalProperties\": false",
+                  "}",
+                  "",
+                  "pm.test('Schema is valid', function() {",
+                  "  pm.response.to.have.jsonSchema(schema)",
+                  "})"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{ratesUrl}}/exchangeRate/?currencyPair=BTC_ETH",
+              "host": ["{{ratesUrl}}"],
+              "path": ["exchangeRate", ""],
+              "query": [
+                {
+                  "key": "currencyPair",
+                  "value": "BTC_ETH"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "exchangeRate/currencyPairAndDate",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const schema = {",
+                  "    \"type\": \"object\",",
+                  "    \"properties\": {",
+                  "        \"currency_pair\": { \"type\": \"string\" },",
+                  "        \"date\": { \"type\": \"string\" },",
+                  "        \"exchangeRate\": { \"type\": \"string\" },",
+                  "    },",
+                  "    \"required\": [\"currency_pair\", \"date\", \"exchangeRate\"],",
+                  "    \"additionalProperties\": false",
+                  "}",
+                  "",
+                  "pm.test('Schema is valid', function() {",
+                  "  pm.response.to.have.jsonSchema(schema)",
+                  "})"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{ratesUrl}}/exchangeRate/?currencyPair=BTC_ETH&date=09-01-21",
+              "host": ["{{ratesUrl}}"],
+              "path": ["exchangeRate", ""],
+              "query": [
+                {
+                  "key": "currencyPair",
+                  "value": "BTC_ETH"
+                },
+                {
+                  "key": "date",
+                  "value": "09-01-21"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "exchangeRate/reverseCurrencyPairAndDate",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const schema = {",
+                  "    \"type\": \"object\",",
+                  "    \"properties\": {",
+                  "        \"currency_pair\": { \"type\": \"string\" },",
+                  "        \"date\": { \"type\": \"string\" },",
+                  "        \"exchangeRate\": { \"type\": \"string\" },",
+                  "    },",
+                  "    \"required\": [\"currency_pair\", \"date\", \"exchangeRate\"],",
+                  "    \"additionalProperties\": false",
+                  "}",
+                  "",
+                  "pm.test('Schema is valid', function() {",
+                  "  pm.response.to.have.jsonSchema(schema)",
+                  "})"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{ratesUrl}}/exchangeRate/?date=09-01-21&currencyPair=BTC_ETH",
+              "host": ["{{ratesUrl}}"],
+              "path": ["exchangeRate", ""],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "09-01-21"
+                },
+                {
+                  "key": "currencyPair",
+                  "value": "BTC_ETH"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "exchangeRates/singleCurrencyPairAndDate",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const schema = {",
+                  "    \"type\": \"object\",",
+                  "    \"properties\": {",
+                  "        \"data\": {",
+                  "            \"type\": \"array\",",
+                  "            \"items\": {",
+                  "                \"type\": \"object\",",
+                  "                \"properties\": {",
+                  "                    \"currency_pair\": { \"type\": \"string\" },",
+                  "                    \"date\": { \"type\": \"string\" },",
+                  "                    \"exchangeRate\": { \"type\": \"string\" },",
+                  "                },",
+                  "            },",
+                  "            \"required\": [\"currency_pair\", \"date\", \"exchangeRate\"]",
+                  "        }",
+                  "    },",
+                  "    \"required\": [\"data\"],",
+                  "    \"additionalProperties\": false",
+                  "}",
+                  "",
+                  "pm.test('Schema is valid', function() {",
+                  "  pm.response.to.have.jsonSchema(schema)",
+                  "})"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"data\": [\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        }\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{ratesUrl}}/exchangeRates/",
+              "host": ["{{ratesUrl}}"],
+              "path": ["exchangeRates", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "exchangeRates/singleCurrencyPairMultipleDates",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const schema = {",
+                  "    \"type\": \"object\",",
+                  "    \"properties\": {",
+                  "        \"data\": {",
+                  "            \"type\": \"array\",",
+                  "            \"items\": {",
+                  "                \"type\": \"object\",",
+                  "                \"properties\": {",
+                  "                    \"currency_pair\": { \"type\": \"string\" },",
+                  "                    \"date\": { \"type\": \"string\" },",
+                  "                    \"exchangeRate\": { \"type\": \"string\" },",
+                  "                },",
+                  "            },",
+                  "            \"required\": [\"currency_pair\", \"date\", \"exchangeRate\"]",
+                  "        }",
+                  "    },",
+                  "    \"required\": [\"data\"],",
+                  "    \"additionalProperties\": false",
+                  "}",
+                  "",
+                  "pm.test('Schema is valid', function() {",
+                  "  pm.response.to.have.jsonSchema(schema)",
+                  "})"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"data\": [\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-02-21\"\n        },\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-03-21\"\n        }\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{ratesUrl}}/exchangeRates/",
+              "host": ["{{ratesUrl}}"],
+              "path": ["exchangeRates", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "exchangeRates/multipleCurrencyPairsSingleDate",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const schema = {",
+                  "    \"type\": \"object\",",
+                  "    \"properties\": {",
+                  "        \"data\": {",
+                  "            \"type\": \"array\",",
+                  "            \"items\": {",
+                  "                \"type\": \"object\",",
+                  "                \"properties\": {",
+                  "                    \"currency_pair\": { \"type\": \"string\" },",
+                  "                    \"date\": { \"type\": \"string\" },",
+                  "                    \"exchangeRate\": { \"type\": \"string\" },",
+                  "                },",
+                  "            },",
+                  "            \"required\": [\"currency_pair\", \"date\", \"exchangeRate\"]",
+                  "        }",
+                  "    },",
+                  "    \"required\": [\"data\"],",
+                  "    \"additionalProperties\": false",
+                  "}",
+                  "",
+                  "pm.test('Schema is valid', function() {",
+                  "  pm.response.to.have.jsonSchema(schema)",
+                  "})"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"data\": [\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"ETH_BTC\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BCH_BTC\",\n            \"date\": \"09-01-21\"\n        }\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{ratesUrl}}/exchangeRates/",
+              "host": ["{{ratesUrl}}"],
+              "path": ["exchangeRates", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "exchangeRates/mixOfCorrectAndIncorrectCurrencyPairs",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const schema = {",
+                  "    \"type\": \"object\",",
+                  "    \"properties\": {",
+                  "        \"data\": {",
+                  "            \"type\": \"array\",",
+                  "            \"items\": {",
+                  "                \"type\": \"object\",",
+                  "                \"properties\": {",
+                  "                    \"currency_pair\": { \"type\": \"string\" },",
+                  "                    \"date\": { \"type\": \"string\" },",
+                  "                    \"exchangeRate\": { \"type\": [\"string\", \"null\"]},",
+                  "                },",
+                  "            },",
+                  "            \"required\": [\"currency_pair\", \"date\", \"exchangeRate\"]",
+                  "        }",
+                  "    },",
+                  "    \"required\": [\"data\"],",
+                  "    \"additionalProperties\": false",
+                  "}",
+                  "",
+                  "pm.test('Schema is valid', function() {",
+                  "  pm.response.to.have.jsonSchema(schema)",
+                  "})"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"data\": [\n        {\n            \"currency_pair\": \"BTC_ETH\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"aibvslkdjv_lakjd\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"BCH_BTC\",\n            \"date\": \"09-01-21\"\n        },\n        {\n            \"currency_pair\": \"aebvieubdv_C\",\n            \"date\": \"09-01-21\"\n        }\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{ratesUrl}}/exchangeRates/",
+              "host": ["{{ratesUrl}}"],
+              "path": ["exchangeRates", ""]
+            }
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [""]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status test\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200])",
+              "})"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ]
+}

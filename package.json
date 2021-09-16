@@ -6,12 +6,15 @@
     "tests": "tests"
   },
   "scripts": {
-    "start": "newman-run -f newmanRun.json",
-    "startInfo": "newman run collections/edge-info-server.postman_collection.json -e ./environments/edge-server-tests.postman_environment.json --reporters html,cli,junit  --reporter-junit-export=coverage/newman-report.xml --reporter-html-export=coverage/newman-results.html --insecure"
+    "start": "newman-run -r -f newmanRun.json",
+    "start:index": "node -r sucrase/register ./index.ts",
+    "start:info": "newman run collections/edge-info-server.postman_collection.json -e ./environments/edge-server-tests.postman_environment.json --reporters html,cli,junit  --reporter-junit-export=coverage/newman-report.xml --reporter-html-export=coverage/newman-results.html --insecure",
+    "start:rates": "newman run collections/edge-rates-server.postman_collection.json -e ./environments/edge-server-tests.postman_environment.json --reporters html,cli,junit  --reporter-junit-export=coverage/newman-report.xml --reporter-html-export=coverage/newman-results.html --insecure"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^16.10.1",
     "newman": "^5.3.0",
     "newman-reporter-html": "^1.0.5"
   },
