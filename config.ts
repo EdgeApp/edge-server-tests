@@ -22,6 +22,16 @@ export const asPostmanEnvironment = asObject({
                 key: 'ratesUrl',
                 value: '',
                 enabled: true
+            },
+            {
+                key: 'reportsUrl',
+                value: 'https://reports1.edge.app/v1',
+                enabled: true
+            },
+            {
+                key: 'reportsApiKey',
+                value: '',
+                enabled: true
             }
         ]
     ),

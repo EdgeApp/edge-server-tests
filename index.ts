@@ -3,7 +3,8 @@ import { exec } from 'child_process'
 
 const collections = {
   info: "collections/edge-info-server.postman_collection.json",
-  rates: "collections/edge-rates-server.postman_collection.json"
+  rates: "collections/edge-rates-server.postman_collection.json",
+  reports: "collections/edge-reports-server.postman_collection.json"
 }
 
 const serverToRun = process?.env?.EDGE_SERVER ?? 'info'
