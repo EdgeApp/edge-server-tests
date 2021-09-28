@@ -1,0 +1,8 @@
+{
+    "runs":[
+        {
+            "collection": "./collections/edge-info-server.postman_collection.json",
+            "environment": "./environments/edge-server-tests.postman_environment.json"
+        }
+    ]
+}

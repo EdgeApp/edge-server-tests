@@ -1,0 +1,22 @@
+{
+  "name": "end-to-end",
+  "version": "1.0.0",
+  "description": "End to end testing for edge servers",
+  "directories": {
+    "tests": "tests"
+  },
+  "scripts": {
+    "start": "newman-run -f newmanRun.json",
+    "startInfo": "newman run collections/edge-info-server.postman_collection.json -e ./environments/edge-server-tests.postman_environment.json --reporters html,cli,junit  --reporter-junit-export=coverage/newman-report.xml --reporter-html-export=coverage/newman-results.html --insecure"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "newman": "^5.3.0",
+    "newman-reporter-html": "^1.0.5"
+  },
+  "dependencies": {
+    "cleaner-config": "^0.1.7",
+    "newman-run": "^1.2.4"
+  }
+}
