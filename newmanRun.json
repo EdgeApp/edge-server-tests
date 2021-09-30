@@ -3,6 +3,10 @@
         {
             "collection": "./collections/edge-info-server.postman_collection.json",
             "environment": "./environments/edge-server-tests.postman_environment.json"
+        },
+        {
+            "collection": "./collections/edge-rates-server.postman_collection.json",
+            "environment": "./environments/edge-server-tests.postman_environment.json"
         }
     ]
 }
