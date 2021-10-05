@@ -9,7 +9,8 @@
     "start": "newman-run -r -f newmanRun.json",
     "start:index": "node -r sucrase/register ./index.ts",
     "start:info": "newman run collections/edge-info-server.postman_collection.json -e ./environments/edge-server-tests.postman_environment.json --reporters html,cli,junit  --reporter-junit-export=coverage/newman-report.xml --reporter-html-export=coverage/newman-results.html --insecure",
-    "start:rates": "newman run collections/edge-rates-server.postman_collection.json -e ./environments/edge-server-tests.postman_environment.json --reporters html,cli,junit  --reporter-junit-export=coverage/newman-report.xml --reporter-html-export=coverage/newman-results.html --insecure"
+    "start:rates": "newman run collections/edge-rates-server.postman_collection.json -e ./environments/edge-server-tests.postman_environment.json --reporters html,cli,junit  --reporter-junit-export=coverage/newman-report.xml --reporter-html-export=coverage/newman-results.html --insecure",
+    "start:reports": "newman run collections/edge-reports-server.postman_collection.json -e ./environments/edge-server-tests.postman_environment.json --reporters html,cli,junit  --reporter-junit-export=coverage/newman-report.xml --reporter-html-export=coverage/newman-results.html --insecure"
   },
   "author": "",
   "license": "ISC",
