@@ -1,1788 +1,1788 @@
 {
-  "info": {
-    "_postman_id": "ded7f400-bd67-4255-8b52-a041f7768c9e",
-    "name": "edge-info-server",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "Sunny Day",
-      "item": [
-        {
-          "name": "Currency Codes",
-          "item": [
-            {
-              "name": "currencyInfo/:currencyCode=ETH",
-              "event": [
-                {
-                  "listen": "prerequest",
-                  "script": {
-                    "exec": [""],
-                    "type": "text/javascript"
-                  }
-                },
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [""],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/currencyInfo/ETH",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["currencyInfo", "ETH"]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "electrumServers/:currencyCode=BTC",
-              "event": [
-                {
-                  "listen": "prerequest",
-                  "script": {
-                    "exec": [""],
-                    "type": "text/javascript"
-                  }
-                },
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const jsonData = pm.response.json();",
-                      "",
-                      "pm.test(\"Returned data type test\", function () {",
-                      "    pm.expect(jsonData).to.be.an(\"array\")",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/electrumServers/BTC",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["electrumServers", "BTC"]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "electrumServers/:currencyCode=BCH",
-              "event": [
-                {
-                  "listen": "prerequest",
-                  "script": {
-                    "exec": [""],
-                    "type": "text/javascript"
-                  }
-                },
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const jsonData = pm.response.json();",
-                      "",
-                      "pm.test(\"Returned data type test\", function () {",
-                      "    pm.expect(jsonData).to.be.an(\"array\")",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/electrumServers/BCH",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["electrumServers", "BCH"]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "networkFees/:currencyCode=BTC",
-              "event": [
-                {
-                  "listen": "prerequest",
-                  "script": {
-                    "exec": [""],
-                    "type": "text/javascript"
-                  }
-                },
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const schema = {",
-                      "    \"type\": \"object\",",
-                      "    \"properties\": {",
-                      "        \"highFee\": { \"type\": \"string\" },",
-                      "        \"lowFee\": { \"type\": \"string\" },",
-                      "        \"standardFeeLow\": { \"type\": \"string\" },",
-                      "        \"standardFeeHigh\": { \"type\": \"string\" },",
-                      "        \"standardFeeLowAmount\": { \"type\": \"string\" },",
-                      "        \"standardFeeHighAmount\": { \"type\": \"string\" }",
-                      "    },",
-                      "    \"required\": [\"highFee\", \"lowFee\", \"standardFeeLow\", \"standardFeeHigh\", \"standardFeeLowAmount\", \"standardFeeHighAmount\"],",
-                      "    \"additionalProperties\": false",
-                      "}",
-                      "",
-                      "pm.test('Schema is valid', function() {",
-                      "  pm.response.to.have.jsonSchema(schema)",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/networkFees/BTC",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["networkFees", "BTC"]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "networkFees/:currencyCode=BCH",
-              "event": [
-                {
-                  "listen": "prerequest",
-                  "script": {
-                    "exec": [""],
-                    "type": "text/javascript"
-                  }
-                },
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const schema = {",
-                      "    \"type\": \"object\",",
-                      "    \"properties\": {",
-                      "        \"highFee\": { \"type\": \"string\" },",
-                      "        \"lowFee\": { \"type\": \"string\" },",
-                      "        \"standardFeeLow\": { \"type\": \"string\" },",
-                      "        \"standardFeeHigh\": { \"type\": \"string\" },",
-                      "        \"standardFeeLowAmount\": { \"type\": \"string\" },",
-                      "        \"standardFeeHighAmount\": { \"type\": \"string\" }",
-                      "    },",
-                      "    \"required\": [\"highFee\", \"lowFee\", \"standardFeeLow\", \"standardFeeHigh\", \"standardFeeLowAmount\", \"standardFeeHighAmount\"],",
-                      "    \"additionalProperties\": false",
-                      "}",
-                      "",
-                      "pm.test('Schema is valid', function() {",
-                      "  pm.response.to.have.jsonSchema(schema)",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/networkFees/BCH",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["networkFees", "BCH"]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "networkFees/:currencyCode=ETH",
-              "event": [
-                {
-                  "listen": "prerequest",
-                  "script": {
-                    "exec": [""],
-                    "type": "text/javascript"
-                  }
-                },
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const schema = {",
-                      "    \"type\": \"object\",",
-                      "    \"properties\": {",
-                      "        \"default\": {",
-                      "            \"type\": \"object\",",
-                      "            \"properties\": {",
-                      "                \"gasLimit\": { ",
-                      "                    \"type\": \"object\",",
-                      "                    \"properties\": {",
-                      "                        \"regularTransaction\": { \"type\": \"string\" },",
-                      "                        \"tokenTransaction\": { \"type\": \"string\" }",
-                      "                    }",
-                      "                },",
-                      "                \"gasPrice\": {",
-                      "                    \"lowFee\": { \"type\": \"string\" },",
-                      "                    \"standardFeeLow\": { \"type\": \"string\" },",
-                      "                    \"standardFeeHigh\": { \"type\": \"string\" },",
-                      "                    \"standardFeeLowAmount\": { \"type\": \"string\" },",
-                      "                    \"standardFeeHighAmount\": { \"type\": \"string\" },",
-                      "                    \"highFee\": { \"type\": \"string\" }",
-                      "                }",
-                      "            }",
-                      "        },",
-                      "        \"0xSomeContractAddress\": {",
-                      "            \"type\": \"object\",",
-                      "            \"properties\": {",
-                      "                \"gasLimit\": {",
-                      "                    \"type\": \"object\",",
-                      "                    \"properties\": {",
-                      "                        \"regularTransaction\": { \"type\": \"string\" },",
-                      "                        \"tokenTransaction\": { \"type\": \"string\" },",
-                      "                    }",
-                      "                }",
-                      "            }",
-                      "        },",
-                      "        \"0x0D8775F648430679A709E98d2b0Cb6250d2887EF\": {",
-                      "            \"type\": \"object\",",
-                      "            \"properties\": {",
-                      "                \"gasLimit\": {",
-                      "                    \"type\": \"object\",",
-                      "                    \"properties\": {",
-                      "                        \"regularTransaction\": { \"type\": \"string\" },",
-                      "                        \"tokenTransaction\": { \"type\": \"string\" }",
-                      "                    }",
-                      "                }",
-                      "            }",
-                      "        }",
-                      "    },",
-                      "    \"required\": [\"default\", \"0xSomeContractAddress\", \"0x0D8775F648430679A709E98d2b0Cb6250d2887EF\"],",
-                      "    \"additionalProperties\": false",
-                      "}",
-                      "",
-                      "pm.test('Schema is valid', function() {",
-                      "  pm.response.to.have.jsonSchema(schema)",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/networkFees/ETH",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["networkFees", "ETH"]
-                }
-              },
-              "response": []
-            }
-          ],
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "type": "text/javascript",
-                "exec": [""]
-              }
-            },
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [""]
-              }
-            }
-          ]
-        },
-        {
-          "name": "appIdInfo",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "const schema = {",
-                  "    \"type\": \"object\",",
-                  "    \"properties\": {",
-                  "        \"imageUrl\": { \"type\": \"string\" },",
-                  "        \"appName\": { \"type\": \"string\" }",
-                  "    },",
-                  "    \"required\": [\"imageUrl\", \"appName\"],",
-                  "    \"additionalProperties\": false",
-                  "}",
-                  "",
-                  "pm.test('Schema is valid', function() {",
-                  "  pm.response.to.have.jsonSchema(schema)",
-                  "})"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{infoUrl}}/appIdInfo",
-              "host": ["{{infoUrl}}"],
-              "path": ["appIdInfo"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "blockBook/",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "const blockBookSchema = {",
-                  "    \"type\": \"object\",",
-                  "    \"properties\": {",
-                  "        \"BTC\": { ",
-                  "            \"type\": \"array\",",
-                  "            \"items\": { ",
-                  "                \"type\": \"string\"",
-                  "            }",
-                  "        },",
-                  "        \"BCH\": { ",
-                  "            \"type\": \"array\",",
-                  "            \"items\": { ",
-                  "                \"type\": \"string\"",
-                  "            }",
-                  "        },",
-                  "        \"BSV\": { \"type\": \"null\" },",
-                  "        \"BC1\": { ",
-                  "            \"type\": \"array\",",
-                  "            \"items\": { ",
-                  "                \"type\": \"string\"",
-                  "            }",
-                  "        },",
-                  "        \"BTG\": { ",
-                  "            \"type\": \"array\",",
-                  "            \"items\": { ",
-                  "                \"type\": \"string\"",
-                  "            }",
-                  "        },",
-                  "        \"DASH\": { ",
-                  "            \"type\": \"array\",",
-                  "            \"items\": { ",
-                  "                \"type\": \"string\"",
-                  "            }",
-                  "        },",
-                  "        \"DGB1\": { ",
-                  "            \"type\": \"array\",",
-                  "            \"items\": { ",
-                  "                \"type\": \"string\"",
-                  "            }",
-                  "        },",
-                  "        \"DOGE\": { ",
-                  "            \"type\": \"array\",",
-                  "            \"items\": { ",
-                  "                \"type\": \"string\"",
-                  "            }",
-                  "        },",
-                  "        \"FTC\": { \"type\": \"null\" },",
-                  "        \"GRS\": { ",
-                  "            \"type\": \"array\",",
-                  "            \"items\": { ",
-                  "                \"type\": \"string\"",
-                  "            }",
-                  "        },",
-                  "        \"LTC\": { ",
-                  "            \"type\": \"array\",",
-                  "            \"items\": { ",
-                  "                \"type\": \"string\"",
-                  "            }",
-                  "        },",
-                  "        \"QTUM\": { \"type\": \"null\" },",
-                  "        \"RVN\": { ",
-                  "            \"type\": \"array\",",
-                  "            \"items\": { ",
-                  "                \"type\": \"string\"",
-                  "            }",
-                  "        },",
-                  "        \"TBTC\": { \"type\": \"null\" },",
-                  "        \"VTC\": { ",
-                  "            \"type\": \"array\",",
-                  "            \"items\": { ",
-                  "                \"type\": \"string\"",
-                  "            }",
-                  "        },",
-                  "        \"XZC\": { \"type\": \"null\" },",
-                  "        \"ETH\": { ",
-                  "            \"type\": \"array\",",
-                  "            \"items\": { ",
-                  "                \"type\": \"string\"",
-                  "            }",
-                  "        },",
-                  "        \"FIRO\": { ",
-                  "            \"type\": \"array\",",
-                  "            \"items\": { ",
-                  "                \"type\": \"string\"",
-                  "            }",
-                  "        },",
-                  "        \"ETC\": { ",
-                  "            \"type\": \"array\",",
-                  "            \"items\": { ",
-                  "                \"type\": \"string\"",
-                  "            }",
-                  "        },",
-                  "        \"TELOS\": { \"type\": \"null\" }",
-                  "    },",
-                  "    \"required\": [\"BTC\", \"BCH\", \"BSV\", \"BC1\", \"BTG\", \"DASH\", \"DGB1\", \"DOGE\", \"FTC\", \"GRS\", \"LTC\", \"QTUM\", \"RVN\", \"TBTC\", \"VTC\", \"XZC\", \"ETH\", \"FIRO\", \"ETC\", \"TELOS\"],",
-                  "    \"additionalProperties\": false",
-                  "}",
-                  "",
-                  "pm.test('Schema is valid', function() {",
-                  "  pm.response.to.have.jsonSchema(blockBookSchema)",
-                  "})"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{infoUrl}}/blockBook/",
-              "host": ["{{infoUrl}}"],
-              "path": ["blockBook", ""]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "checkStatus/",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "const checkStatusSchema = {",
-                  "    \"type\": \"object\",",
-                  "    \"properties\": {",
-                  "        \"loginServer\": { \"type\": \"string\" },",
-                  "        \"syncServer\": { \"type\": \"string\" }",
-                  "    },",
-                  "    \"required\": [\"loginServer\", \"syncServer\"],",
-                  "    \"additionalProperties\": false",
-                  "}",
-                  "",
-                  "pm.test('Schema is valid', function() {",
-                  "  pm.response.to.have.jsonSchema(checkStatusSchema)",
-                  "})"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{infoUrl}}/checkStatus/",
-              "host": ["{{infoUrl}}"],
-              "path": ["checkStatus", ""]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "edgeServers",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "const edgeServersSchema = {",
-                  "    \"type\": \"object\",",
-                  "    \"properties\": {",
-                  "        \"loginServers\": { \"type\": \"array\" },",
-                  "        \"infoServers\": { \"type\": \"array\" },",
-                  "        \"referralServers\": { \"type\": \"array\" },",
-                  "        \"ratesServers\": { \"type\": \"array\" },",
-                  "        \"logsServers\": { \"type\": \"array\" },",
-                  "        \"syncServers\": { \"type\": \"array\" }",
-                  "    },",
-                  "    \"required\": [\"loginServers\", \"infoServers\", \"referralServers\", \"ratesServers\", \"logsServers\", \"syncServers\"],",
-                  "    \"additionalProperties\": false",
-                  "}",
-                  "",
-                  "pm.test('Schema is valid', function() {",
-                  "  pm.response.to.have.jsonSchema(edgeServersSchema)",
-                  "})"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{infoUrl}}/edgeServers",
-              "host": ["{{infoUrl}}"],
-              "path": ["edgeServers"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "eosPrices",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "const eosPricesSchema = {",
-                  "    \"type\": \"object\",",
-                  "    \"properties\": {",
-                  "        \"_id\": { \"type\": \"string\" },",
-                  "        \"_rev\": { \"type\": \"string\" },",
-                  "        \"ram\": { \"type\": \"string\" },",
-                  "        \"net\": { \"type\": \"string\" },",
-                  "        \"cpu\": { \"type\": \"string\" }",
-                  "    },",
-                  "    \"required\": [\"_id\", \"_rev\", \"ram\", \"net\", \"cpu\"],",
-                  "    \"additionalProperties\": false",
-                  "}",
-                  "",
-                  "pm.test('Schema is valid', function() {",
-                  "  pm.response.to.have.jsonSchema(eosPricesSchema)",
-                  "})"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{infoUrl}}/eosPrices",
-              "host": ["{{infoUrl}}"],
-              "path": ["eosPrices"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "metaTokens/:chainCode=eth/",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "const schema = {",
-                  "    \"type\": \"object\",",
-                  "    \"properties\": {",
-                  "        \"defaultMetaTokens\": { \"type\": \"object\" },",
-                  "        \"customMetaTokens\": { \"type\": \"object\" }",
-                  "    },",
-                  "    \"required\": [\"defaultMetaTokens\", \"customMetaTokens\"],",
-                  "}",
-                  "",
-                  "pm.test('Schema is valid', function() {",
-                  "  pm.response.to.have.jsonSchema(schema)",
-                  "})"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{infoUrl}}/metaTokens/eth/",
-              "host": ["{{infoUrl}}"],
-              "path": ["metaTokens", "eth", ""]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "metaTokens/:chainCode=ftm/",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "const schema = {",
-                  "    \"type\": \"object\",",
-                  "    \"properties\": {",
-                  "        \"defaultMetaTokens\": { \"type\": \"object\" },",
-                  "        \"customMetaTokens\": { \"type\": \"object\" }",
-                  "    },",
-                  "    \"required\": [\"defaultMetaTokens\", \"customMetaTokens\"],",
-                  "}",
-                  "",
-                  "pm.test('Schema is valid', function() {",
-                  "  pm.response.to.have.jsonSchema(schema)",
-                  "})"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{infoUrl}}/metaTokens/ftm/",
-              "host": ["{{infoUrl}}"],
-              "path": ["metaTokens", "ftm", ""]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "metaTokens/:chainCode=rsk/",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "const schema = {",
-                  "    \"type\": \"object\",",
-                  "    \"properties\": {",
-                  "        \"defaultMetaTokens\": { \"type\": \"object\" },",
-                  "        \"customMetaTokens\": { \"type\": \"object\" }",
-                  "    },",
-                  "    \"required\": [\"defaultMetaTokens\", \"customMetaTokens\"],",
-                  "}",
-                  "",
-                  "pm.test('Schema is valid', function() {",
-                  "  pm.response.to.have.jsonSchema(schema)",
-                  "})"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{infoUrl}}/metaTokens/rsk/",
-              "host": ["{{infoUrl}}"],
-              "path": ["metaTokens", "rsk", ""]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "notifications",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{infoUrl}}/notifications",
-              "host": ["{{infoUrl}}"],
-              "path": ["notifications"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "syncServers",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "const edgeServersSchema = {",
-                  "    \"type\": \"object\",",
-                  "    \"properties\": {",
-                  "        \"_id\": { \"type\": \"string\" },",
-                  "        \"_rev\": { \"type\": \"string\" },",
-                  "        \"clusters\": { \"type\": \"array\",",
-                  "            \"items\": { \"type\": \"array\",",
-                  "                \"items\": { \"type\": \"object\",",
-                  "                    \"properties\": {",
-                  "                        \"host\": {",
-                  "                            \"type\": \"string\"",
-                  "                        }",
-                  "                    }",
-                  "                }",
-                  "            }",
-                  "        },",
-                  "    },",
-                  "    \"required\": [\"_id\", \"_rev\", \"clusters\"],",
-                  "    \"additionalProperties\": false",
-                  "}",
-                  "",
-                  "pm.test('Schema is valid', function() {",
-                  "  pm.response.to.have.jsonSchema(edgeServersSchema)",
-                  "})"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{infoUrl}}/syncServers",
-              "host": ["{{infoUrl}}"],
-              "path": ["syncServers"]
-            }
-          },
-          "response": []
-        }
-      ],
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "type": "text/javascript",
-            "exec": [""]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "pm.test(\"Status test\", function () {",
-              "    pm.response.to.have.status(200);",
-              "})"
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "name": "Rainy Day",
-      "item": [
-        {
-          "name": "200",
-          "item": [
-            {
-              "name": "airbitzChainChoice/:apiKey=badCode",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "pm.test(\"Bad params test\", function () {",
-                      "    pm.response.to.have.body('');",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/airbitzChainChoice/{{badCode}}",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["airbitzChainChoice", "{{badCode}}"]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "airbitzCurrencyInfo/:currencyCode=badCode",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const badCode = pm.collectionVariables.get(\"badCode\")",
-                      "",
-                      "pm.test(\"Empty params test\", function () {",
-                      "    pm.response.to.have.body(`\"Unable to find airbitzCurrencyInfo ${badCode}\"`);",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/airbitzCurrencyInfo/{{badCode}}",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["airbitzCurrencyInfo", "{{badCode}}"]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "appIdInfo/:appId=badCode",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const badCode = pm.collectionVariables.get(\"badCode\");",
-                      "",
-                      "pm.test(\"Bad code test\", function () {",
-                      "    pm.response.to.have.body(`\"Unable to find app id ${badCode}\"`);",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/appIdInfo/{{badCode}}",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["appIdInfo", "{{badCode}}"]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "blockBook/:currencyCode",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const badCode = pm.collectionVariables.get(\"badCode\");",
-                      "",
-                      "pm.test(\"Bad code test\", function () {",
-                      "    pm.response.to.have.body(`\"Unable to find blockBook for ${badCode}\"`);",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/blockBook/{{badCode}}",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["blockBook", "{{badCode}}"]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "currencyInfo/:currencyCode=badCode",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const badCode = pm.collectionVariables.get(\"badCode\");",
-                      "",
-                      "pm.test(\"Bad code test\", function () {",
-                      "    pm.response.to.have.body(`\"Unable to find currencyInfo ${badCode}\"`);",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/currencyInfo/{{badCode}}",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["currencyInfo", "{{badCode}}"]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "electrumServers/:currencyCode=badCode",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const badCode = pm.collectionVariables.get(\"badCode\")",
-                      "",
-                      "pm.test(\"Empty params test\", function () {",
-                      "    pm.response.to.have.body(`\"Unable to find electrumServers ${badCode}\"`);",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/electrumServers/{{badCode}}",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["electrumServers", "{{badCode}}"]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "getLogs/:timestamp=badCode",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const eosPricesSchema = {",
-                      "    \"type\": \"object\",",
-                      "    \"properties\": {",
-                      "        \"message\": { \"type\": \"string\" },",
-                      "        \"stack\": { \"type\": \"string\" },",
-                      "        \"name\": { \"type\": \"string\" },",
-                      "        \"error\": { \"type\": \"string\" },",
-                      "        \"reason\": { \"type\": \"string\" },",
-                      "        \"scope\": { \"type\": \"string\" },",
-                      "        \"statusCode\": { \"type\": \"number\" },",
-                      "        \"request\": { ",
-                      "            \"type\": \"object\",",
-                      "            \"properties\": {",
-                      "                \"method\": { \"type\": \"string\" },",
-                      "                \"headers\": { ",
-                      "                    \"type\": \"object\",",
-                      "                    \"properties\": {",
-                      "                        \"content-type\": { \"type\": \"string\"},",
-                      "                        \"accept\": { \"type\": \"string\"},",
-                      "                    }",
-                      "                },",
-                      "                \"uri\": { \"type\": \"string\" }",
-                      "            }",
-                      "        },",
-                      "        \"headers\": { ",
-                      "            \"type\": \"object\",",
-                      "            \"properties\": {",
-                      "                \"date\": { \"type\": \"string\" },",
-                      "                \"content-type\": { \"type\": \"string\" },",
-                      "                \"cache-control\": { \"type\": \"string\" },",
-                      "                \"statusCode\": { \"type\": \"number\" },",
-                      "                \"uri\": { \"type\": \"string\" },",
-                      "            }",
-                      "        },",
-                      "        \"errid\": { \"type\": \"string\" },",
-                      "        \"description\": { \"type\": \"string\" }",
-                      "    },",
-                      "    \"required\": [\"message\", \"stack\", \"name\", \"error\", \"reason\", \"scope\", \"statusCode\", \"request\", \"headers\", \"errid\", \"description\"],",
-                      "    \"additionalProperties\": false",
-                      "}",
-                      "",
-                      "pm.test('Schema is valid', function() {",
-                      "  pm.response.to.have.jsonSchema(eosPricesSchema)",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/getLogs-qkevjbawkejbksjfbvkJEhrwb/{{badCode}}",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["getLogs-qkevjbawkejbksjfbvkJEhrwb", "{{badCode}}"]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "networkFees/:currencyCode=badCode",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const badCode = pm.collectionVariables.get(\"badCode\")",
-                      "",
-                      "pm.test(\"Empty params test\", function () {",
-                      "    pm.response.to.have.body(`\"Unable to find networkFees for currency ${badCode}\"`);",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/networkFees/{{badCode}}",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["networkFees", "{{badCode}}"]
-                }
-              },
-              "response": []
-            }
-          ],
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "type": "text/javascript",
-                "exec": [""]
-              }
-            },
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status test\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "})"
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "400",
-          "item": [
-            {
-              "name": "edgeServersInternal/:serverName/",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "pm.test(\"Empty query test\", function () {",
-                      "    pm.response.to.have.body('Missing Request fields.');",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/edgeServersInternal/loginServers/",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["edgeServersInternal", "loginServers", ""]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "edgeServersInternal/:serverName=badCode",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const badCode = pm.collectionVariables.get(\"badCode\")",
-                      "",
-                      "pm.test(\"Bad Param test\", function () {",
-                      "    pm.response.to.have.body(`Server name ${badCode} could not be found.`);",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/edgeServersInternal/{{badCode}}/?apiKey='1234'",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["edgeServersInternal", "{{badCode}}", ""],
-                  "query": [
-                    {
-                      "key": "apiKey",
-                      "value": "'1234'"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "edgeServersInternal/:serverName/query=badCode",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "pm.test(\"Bad api key test\", function () {",
-                      "    pm.response.to.have.body(\"API Key does not match loginServers's API Key.\")",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/edgeServersInternal/loginServers/?apiKey={{badCode}}",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["edgeServersInternal", "loginServers", ""],
-                  "query": [
-                    {
-                      "key": "apiKey",
-                      "value": "{{badCode}}"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "exchangeRate/",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const schema = {",
-                      "    \"type\": \"object\",",
-                      "    \"properties\": {",
-                      "        \"error\": { \"type\": \"string\" }",
-                      "    },",
-                      "    \"required\": [\"error\"],",
-                      "    \"additionalProperties\": false",
-                      "}",
-                      "",
-                      "pm.test('Schema is valid', function() {",
-                      "  pm.response.to.have.jsonSchema(schema)",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/exchangeRate/",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["exchangeRate", ""]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "exchangeRate/currency_pair=badCode&date=badCode",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const schema = {",
-                      "    \"type\": \"object\",",
-                      "    \"properties\": {",
-                      "        \"error\": { \"type\": \"string\" }",
-                      "    },",
-                      "    \"required\": [\"error\"],",
-                      "    \"additionalProperties\": false",
-                      "}",
-                      "",
-                      "pm.test('Schema is valid', function() {",
-                      "  pm.response.to.have.jsonSchema(schema)",
-                      "})",
-                      "pm.test('Error response test', function() {",
-                      "    pm.expect(pm.response.json().error).to.eql(\"currency_pair query param malformed.  should be [curA]_[curB], ex: \\\"ETH_USD\\\"\")",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/exchangeRate/?currency_pair={{badCode}}&date={{badCode}}",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["exchangeRate", ""],
-                  "query": [
-                    {
-                      "key": "currency_pair",
-                      "value": "{{badCode}}"
-                    },
-                    {
-                      "key": "date",
-                      "value": "{{badCode}}"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "exchangeRate/currency_pair=BTC_ETH&date=badCode",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const schema = {",
-                      "    \"type\": \"object\",",
-                      "    \"properties\": {",
-                      "        \"error\": { \"type\": \"string\" }",
-                      "    },",
-                      "    \"required\": [\"error\"],",
-                      "    \"additionalProperties\": false",
-                      "}",
-                      "",
-                      "pm.test('Schema is valid', function() {",
-                      "  pm.response.to.have.jsonSchema(schema)",
-                      "})",
-                      "pm.test('Error response test', function() {",
-                      "    pm.expect(pm.response.json().error).to.eql(\"date query param malformed.  should be conventional date string, ex:\\\"2019-11-21T15:28:21.123Z\\\"\")",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/exchangeRate/?currency_pair=BTC_ETH&date={{badCode}}",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["exchangeRate", ""],
-                  "query": [
-                    {
-                      "key": "currency_pair",
-                      "value": "BTC_ETH"
-                    },
-                    {
-                      "key": "date",
-                      "value": "{{badCode}}"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "exchangeRate/currency_pair=BTC_ETH&date=01-01-40",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const schema = {",
-                      "    \"type\": \"object\",",
-                      "    \"properties\": {",
-                      "        \"error\": { \"type\": \"string\" }",
-                      "    },",
-                      "    \"required\": [\"error\"],",
-                      "    \"additionalProperties\": false",
-                      "}",
-                      "",
-                      "pm.test('Schema is valid', function() {",
-                      "  pm.response.to.have.jsonSchema(schema)",
-                      "})",
-                      "pm.test('Error response test', function() {",
-                      "    pm.expect(pm.response.json().error).to.eql(\"Future date received. Must send past date.\")",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/exchangeRate/?currency_pair=BTC_ETH&date=01-01-40",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["exchangeRate", ""],
-                  "query": [
-                    {
-                      "key": "currency_pair",
-                      "value": "BTC_ETH"
-                    },
-                    {
-                      "key": "date",
-                      "value": "01-01-40"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "metaTokens/:chainCode=badCode/",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const badCode = pm.collectionVariables.get(\"badCode\")",
-                      "",
-                      "pm.test(\"Empty params test\", function () {",
-                      "    pm.response.to.have.body(`\"Unknown Meta Token: ${badCode}/undefined\"`)",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/metaTokens/{{badCode}}/",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["metaTokens", "{{badCode}}", ""]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "metaTokens/:chainCode=ETH/:tokenCode=badCode",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const badCode = pm.collectionVariables.get(\"badCode\")",
-                      "",
-                      "pm.test(\"Bad params test\", function () {",
-                      "    pm.response.to.have.body(`\"Unknown Meta Token: eth/${badCode}\"`);",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/metaTokens/eth/{{badCode}}",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["metaTokens", "eth", "{{badCode}}"]
-                }
-              },
-              "response": []
-            }
-          ],
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "type": "text/javascript",
-                "exec": [""]
-              }
-            },
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status test\", function () {",
-                  "    pm.response.to.have.status(400);",
-                  "})"
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "404",
-          "item": [
-            {
-              "name": "airbitzChainChoice/",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "pm.test(\"Empty params test\", function () {",
-                      "    pm.response.to.have.body('Cannot GET /v1/airbitzChainChoice/\\n');",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/airbitzChainChoice/",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["airbitzChainChoice", ""]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "airbitzCurrencyInfo/",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "pm.test(\"Empty params test\", function () {",
-                      "    pm.response.to.have.body('Cannot GET /v1/airbitzCurrencyInfo/\\n');",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/airbitzCurrencyInfo/",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["airbitzCurrencyInfo", ""]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "getLogs/",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "pm.test(\"Empty params test\", function () {",
-                      "    pm.response.to.have.body('Cannot GET /v1/getLogs-qkevjbawkejbksjfbvkJEhrwb/\\n')",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/getLogs-qkevjbawkejbksjfbvkJEhrwb/",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["getLogs-qkevjbawkejbksjfbvkJEhrwb", ""]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "edgeServersInternal/",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "pm.test(\"Empty params test\", function () {",
-                      "    pm.response.to.have.body('Cannot GET /v1/edgeServersInternal/\\n');",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/edgeServersInternal/",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["edgeServersInternal", ""]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "edgeServersInternal/:serverName/badCode",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const badCode = pm.collectionVariables.get(\"badCode\")",
-                      "",
-                      "pm.test(\"Bad query format test\", function () {",
-                      "    pm.response.to.have.body(`Cannot GET /v1/edgeServersInternal/loginServers/${badCode}\\n`);",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/edgeServersInternal/loginServers/{{badCode}}",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["edgeServersInternal", "loginServers", "{{badCode}}"]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "currencyInfo/",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "pm.test(\"Empty params test\", function () {",
-                      "    pm.response.to.have.body('Cannot GET /v1/currencyInfo/\\n');",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/currencyInfo/",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["currencyInfo", ""]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "electrumServers/",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "pm.test(\"Empty params test\", function () {",
-                      "    pm.response.to.have.body('Cannot GET /v1/electrumServers/\\n');",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/electrumServers/",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["electrumServers", ""]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "networkFees/",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "pm.test(\"Empty params test\", function () {",
-                      "    pm.response.to.have.body('Cannot GET /v1/networkFees/\\n');",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/networkFees/",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["networkFees", ""]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "metaTokens/",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "pm.test(\"Empty params test\", function () {",
-                      "    pm.response.to.have.body('Cannot GET /v1/metaTokens/\\n');",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/metaTokens/",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["metaTokens", ""]
-                }
-              },
-              "response": []
-            }
-          ],
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "type": "text/javascript",
-                "exec": [""]
-              }
-            },
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status test\", function () {",
-                  "    pm.response.to.have.status(404);",
-                  "})"
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "500",
-          "item": [
-            {
-              "name": "exchangeRate/currency_pair=BTC_ETH&date=01-01-01",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      "const schema = {",
-                      "    \"type\": \"object\",",
-                      "    \"properties\": {",
-                      "        \"error\": { \"type\": \"string\" }",
-                      "    },",
-                      "    \"required\": [\"error\"],",
-                      "    \"additionalProperties\": false",
-                      "}",
-                      "",
-                      "pm.test('Schema is valid', function() {",
-                      "  pm.response.to.have.jsonSchema(schema)",
-                      "})",
-                      "pm.test('Error response test', function() {",
-                      "    pm.expect(pm.response.json().error).to.eql(\"All lookups failed to find rate\")",
-                      "})"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{infoUrl}}/exchangeRate/?currency_pair=BTC_ETH&date=01-01-01",
-                  "host": ["{{infoUrl}}"],
-                  "path": ["exchangeRate", ""],
-                  "query": [
-                    {
-                      "key": "currency_pair",
-                      "value": "BTC_ETH"
-                    },
-                    {
-                      "key": "date",
-                      "value": "01-01-01"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            }
-          ],
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "type": "text/javascript",
-                "exec": [""]
-              }
-            },
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status test\", function () {",
-                  "    pm.response.to.have.status(500);",
-                  "})"
-                ]
-              }
-            }
-          ]
-        }
-      ],
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "type": "text/javascript",
-            "exec": [""]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [""]
-          }
-        }
-      ]
-    }
-  ],
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "type": "text/javascript",
-        "exec": [""]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "type": "text/javascript",
-        "exec": [""]
-      }
-    }
-  ],
-  "variable": [
-    {
-      "key": "badCode",
-      "value": "aibgalkdjbfalskjdn"
-    }
-  ]
+	"info": {
+		"_postman_id": "ded7f400-bd67-4255-8b52-a041f7768c9e",
+		"name": "edge-info-server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sunny Day",
+			"item": [
+				{
+					"name": "Currency Codes",
+					"item": [
+						{
+							"name": "currencyInfo/:currencyCode=ETH",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [""],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [""],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/currencyInfo/ETH",
+									"host": ["{{infoUrl}}"],
+									"path": ["currencyInfo", "ETH"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "electrumServers/:currencyCode=BTC",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [""],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Returned data type test\", function () {",
+											"    pm.expect(jsonData).to.be.an(\"array\")",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/electrumServers/BTC",
+									"host": ["{{infoUrl}}"],
+									"path": ["electrumServers", "BTC"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "electrumServers/:currencyCode=BCH",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [""],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Returned data type test\", function () {",
+											"    pm.expect(jsonData).to.be.an(\"array\")",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/electrumServers/BCH",
+									"host": ["{{infoUrl}}"],
+									"path": ["electrumServers", "BCH"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "networkFees/:currencyCode=BTC",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [""],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const schema = {",
+											"    \"type\": \"object\",",
+											"    \"properties\": {",
+											"        \"highFee\": { \"type\": \"string\" },",
+											"        \"lowFee\": { \"type\": \"string\" },",
+											"        \"standardFeeLow\": { \"type\": \"string\" },",
+											"        \"standardFeeHigh\": { \"type\": \"string\" },",
+											"        \"standardFeeLowAmount\": { \"type\": \"string\" },",
+											"        \"standardFeeHighAmount\": { \"type\": \"string\" }",
+											"    },",
+											"    \"required\": [\"highFee\", \"lowFee\", \"standardFeeLow\", \"standardFeeHigh\", \"standardFeeLowAmount\", \"standardFeeHighAmount\"],",
+											"    \"additionalProperties\": false",
+											"}",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.response.to.have.jsonSchema(schema)",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/networkFees/BTC",
+									"host": ["{{infoUrl}}"],
+									"path": ["networkFees", "BTC"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "networkFees/:currencyCode=BCH",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [""],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const schema = {",
+											"    \"type\": \"object\",",
+											"    \"properties\": {",
+											"        \"highFee\": { \"type\": \"string\" },",
+											"        \"lowFee\": { \"type\": \"string\" },",
+											"        \"standardFeeLow\": { \"type\": \"string\" },",
+											"        \"standardFeeHigh\": { \"type\": \"string\" },",
+											"        \"standardFeeLowAmount\": { \"type\": \"string\" },",
+											"        \"standardFeeHighAmount\": { \"type\": \"string\" }",
+											"    },",
+											"    \"required\": [\"highFee\", \"lowFee\", \"standardFeeLow\", \"standardFeeHigh\", \"standardFeeLowAmount\", \"standardFeeHighAmount\"],",
+											"    \"additionalProperties\": false",
+											"}",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.response.to.have.jsonSchema(schema)",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/networkFees/BCH",
+									"host": ["{{infoUrl}}"],
+									"path": ["networkFees", "BCH"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "networkFees/:currencyCode=ETH",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [""],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const schema = {",
+											"    \"type\": \"object\",",
+											"    \"properties\": {",
+											"        \"default\": {",
+											"            \"type\": \"object\",",
+											"            \"properties\": {",
+											"                \"gasLimit\": { ",
+											"                    \"type\": \"object\",",
+											"                    \"properties\": {",
+											"                        \"regularTransaction\": { \"type\": \"string\" },",
+											"                        \"tokenTransaction\": { \"type\": \"string\" }",
+											"                    }",
+											"                },",
+											"                \"gasPrice\": {",
+											"                    \"lowFee\": { \"type\": \"string\" },",
+											"                    \"standardFeeLow\": { \"type\": \"string\" },",
+											"                    \"standardFeeHigh\": { \"type\": \"string\" },",
+											"                    \"standardFeeLowAmount\": { \"type\": \"string\" },",
+											"                    \"standardFeeHighAmount\": { \"type\": \"string\" },",
+											"                    \"highFee\": { \"type\": \"string\" }",
+											"                }",
+											"            }",
+											"        },",
+											"        \"0xSomeContractAddress\": {",
+											"            \"type\": \"object\",",
+											"            \"properties\": {",
+											"                \"gasLimit\": {",
+											"                    \"type\": \"object\",",
+											"                    \"properties\": {",
+											"                        \"regularTransaction\": { \"type\": \"string\" },",
+											"                        \"tokenTransaction\": { \"type\": \"string\" },",
+											"                    }",
+											"                }",
+											"            }",
+											"        },",
+											"        \"0x0D8775F648430679A709E98d2b0Cb6250d2887EF\": {",
+											"            \"type\": \"object\",",
+											"            \"properties\": {",
+											"                \"gasLimit\": {",
+											"                    \"type\": \"object\",",
+											"                    \"properties\": {",
+											"                        \"regularTransaction\": { \"type\": \"string\" },",
+											"                        \"tokenTransaction\": { \"type\": \"string\" }",
+											"                    }",
+											"                }",
+											"            }",
+											"        }",
+											"    },",
+											"    \"required\": [\"default\", \"0xSomeContractAddress\", \"0x0D8775F648430679A709E98d2b0Cb6250d2887EF\"],",
+											"    \"additionalProperties\": false",
+											"}",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.response.to.have.jsonSchema(schema)",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/networkFees/ETH",
+									"host": ["{{infoUrl}}"],
+									"path": ["networkFees", "ETH"]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [""]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [""]
+							}
+						}
+					]
+				},
+				{
+					"name": "appIdInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const schema = {",
+									"    \"type\": \"object\",",
+									"    \"properties\": {",
+									"        \"imageUrl\": { \"type\": \"string\" },",
+									"        \"appName\": { \"type\": \"string\" }",
+									"    },",
+									"    \"required\": [\"imageUrl\", \"appName\"],",
+									"    \"additionalProperties\": false",
+									"}",
+									"",
+									"pm.test('Schema is valid', function() {",
+									"  pm.response.to.have.jsonSchema(schema)",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{infoUrl}}/appIdInfo",
+							"host": ["{{infoUrl}}"],
+							"path": ["appIdInfo"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "blockBook/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const blockBookSchema = {",
+									"    \"type\": \"object\",",
+									"    \"properties\": {",
+									"        \"BTC\": { ",
+									"            \"type\": \"array\",",
+									"            \"items\": { ",
+									"                \"type\": \"string\"",
+									"            }",
+									"        },",
+									"        \"BCH\": { ",
+									"            \"type\": \"array\",",
+									"            \"items\": { ",
+									"                \"type\": \"string\"",
+									"            }",
+									"        },",
+									"        \"BSV\": { \"type\": \"null\" },",
+									"        \"BC1\": { ",
+									"            \"type\": \"array\",",
+									"            \"items\": { ",
+									"                \"type\": \"string\"",
+									"            }",
+									"        },",
+									"        \"BTG\": { ",
+									"            \"type\": \"array\",",
+									"            \"items\": { ",
+									"                \"type\": \"string\"",
+									"            }",
+									"        },",
+									"        \"DASH\": { ",
+									"            \"type\": \"array\",",
+									"            \"items\": { ",
+									"                \"type\": \"string\"",
+									"            }",
+									"        },",
+									"        \"DGB1\": { ",
+									"            \"type\": \"array\",",
+									"            \"items\": { ",
+									"                \"type\": \"string\"",
+									"            }",
+									"        },",
+									"        \"DOGE\": { ",
+									"            \"type\": \"array\",",
+									"            \"items\": { ",
+									"                \"type\": \"string\"",
+									"            }",
+									"        },",
+									"        \"FTC\": { \"type\": \"null\" },",
+									"        \"GRS\": { ",
+									"            \"type\": \"array\",",
+									"            \"items\": { ",
+									"                \"type\": \"string\"",
+									"            }",
+									"        },",
+									"        \"LTC\": { ",
+									"            \"type\": \"array\",",
+									"            \"items\": { ",
+									"                \"type\": \"string\"",
+									"            }",
+									"        },",
+									"        \"QTUM\": { \"type\": \"null\" },",
+									"        \"RVN\": { ",
+									"            \"type\": \"array\",",
+									"            \"items\": { ",
+									"                \"type\": \"string\"",
+									"            }",
+									"        },",
+									"        \"TBTC\": { \"type\": \"null\" },",
+									"        \"VTC\": { ",
+									"            \"type\": \"array\",",
+									"            \"items\": { ",
+									"                \"type\": \"string\"",
+									"            }",
+									"        },",
+									"        \"XZC\": { \"type\": \"null\" },",
+									"        \"ETH\": { ",
+									"            \"type\": \"array\",",
+									"            \"items\": { ",
+									"                \"type\": \"string\"",
+									"            }",
+									"        },",
+									"        \"FIRO\": { ",
+									"            \"type\": \"array\",",
+									"            \"items\": { ",
+									"                \"type\": \"string\"",
+									"            }",
+									"        },",
+									"        \"ETC\": { ",
+									"            \"type\": \"array\",",
+									"            \"items\": { ",
+									"                \"type\": \"string\"",
+									"            }",
+									"        },",
+									"        \"TELOS\": { \"type\": \"null\" }",
+									"    },",
+									"    \"required\": [\"BTC\", \"BCH\", \"BSV\", \"BC1\", \"BTG\", \"DASH\", \"DGB1\", \"DOGE\", \"FTC\", \"GRS\", \"LTC\", \"QTUM\", \"RVN\", \"TBTC\", \"VTC\", \"XZC\", \"ETH\", \"FIRO\", \"ETC\", \"TELOS\"],",
+									"    \"additionalProperties\": false",
+									"}",
+									"",
+									"pm.test('Schema is valid', function() {",
+									"  pm.response.to.have.jsonSchema(blockBookSchema)",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{infoUrl}}/blockBook/",
+							"host": ["{{infoUrl}}"],
+							"path": ["blockBook", ""]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkStatus/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const checkStatusSchema = {",
+									"    \"type\": \"object\",",
+									"    \"properties\": {",
+									"        \"loginServer\": { \"type\": \"string\" },",
+									"        \"syncServer\": { \"type\": \"string\" }",
+									"    },",
+									"    \"required\": [\"loginServer\", \"syncServer\"],",
+									"    \"additionalProperties\": false",
+									"}",
+									"",
+									"pm.test('Schema is valid', function() {",
+									"  pm.response.to.have.jsonSchema(checkStatusSchema)",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{infoUrl}}/checkStatus/",
+							"host": ["{{infoUrl}}"],
+							"path": ["checkStatus", ""]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edgeServers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const edgeServersSchema = {",
+									"    \"type\": \"object\",",
+									"    \"properties\": {",
+									"        \"loginServers\": { \"type\": \"array\" },",
+									"        \"infoServers\": { \"type\": \"array\" },",
+									"        \"referralServers\": { \"type\": \"array\" },",
+									"        \"ratesServers\": { \"type\": \"array\" },",
+									"        \"logsServers\": { \"type\": \"array\" },",
+									"        \"syncServers\": { \"type\": \"array\" }",
+									"    },",
+									"    \"required\": [\"loginServers\", \"infoServers\", \"referralServers\", \"ratesServers\", \"logsServers\", \"syncServers\"],",
+									"    \"additionalProperties\": false",
+									"}",
+									"",
+									"pm.test('Schema is valid', function() {",
+									"  pm.response.to.have.jsonSchema(edgeServersSchema)",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{infoUrl}}/edgeServers",
+							"host": ["{{infoUrl}}"],
+							"path": ["edgeServers"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eosPrices",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const eosPricesSchema = {",
+									"    \"type\": \"object\",",
+									"    \"properties\": {",
+									"        \"_id\": { \"type\": \"string\" },",
+									"        \"_rev\": { \"type\": \"string\" },",
+									"        \"ram\": { \"type\": \"string\" },",
+									"        \"net\": { \"type\": \"string\" },",
+									"        \"cpu\": { \"type\": \"string\" }",
+									"    },",
+									"    \"required\": [\"_id\", \"_rev\", \"ram\", \"net\", \"cpu\"],",
+									"    \"additionalProperties\": false",
+									"}",
+									"",
+									"pm.test('Schema is valid', function() {",
+									"  pm.response.to.have.jsonSchema(eosPricesSchema)",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{infoUrl}}/eosPrices",
+							"host": ["{{infoUrl}}"],
+							"path": ["eosPrices"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "metaTokens/:chainCode=eth/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const schema = {",
+									"    \"type\": \"object\",",
+									"    \"properties\": {",
+									"        \"defaultMetaTokens\": { \"type\": \"object\" },",
+									"        \"customMetaTokens\": { \"type\": \"object\" }",
+									"    },",
+									"    \"required\": [\"defaultMetaTokens\", \"customMetaTokens\"],",
+									"}",
+									"",
+									"pm.test('Schema is valid', function() {",
+									"  pm.response.to.have.jsonSchema(schema)",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{infoUrl}}/metaTokens/eth/",
+							"host": ["{{infoUrl}}"],
+							"path": ["metaTokens", "eth", ""]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "metaTokens/:chainCode=ftm/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const schema = {",
+									"    \"type\": \"object\",",
+									"    \"properties\": {",
+									"        \"defaultMetaTokens\": { \"type\": \"object\" },",
+									"        \"customMetaTokens\": { \"type\": \"object\" }",
+									"    },",
+									"    \"required\": [\"defaultMetaTokens\", \"customMetaTokens\"],",
+									"}",
+									"",
+									"pm.test('Schema is valid', function() {",
+									"  pm.response.to.have.jsonSchema(schema)",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{infoUrl}}/metaTokens/ftm/",
+							"host": ["{{infoUrl}}"],
+							"path": ["metaTokens", "ftm", ""]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "metaTokens/:chainCode=rsk/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const schema = {",
+									"    \"type\": \"object\",",
+									"    \"properties\": {",
+									"        \"defaultMetaTokens\": { \"type\": \"object\" },",
+									"        \"customMetaTokens\": { \"type\": \"object\" }",
+									"    },",
+									"    \"required\": [\"defaultMetaTokens\", \"customMetaTokens\"],",
+									"}",
+									"",
+									"pm.test('Schema is valid', function() {",
+									"  pm.response.to.have.jsonSchema(schema)",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{infoUrl}}/metaTokens/rsk/",
+							"host": ["{{infoUrl}}"],
+							"path": ["metaTokens", "rsk", ""]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "notifications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{infoUrl}}/notifications",
+							"host": ["{{infoUrl}}"],
+							"path": ["notifications"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "syncServers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const edgeServersSchema = {",
+									"    \"type\": \"object\",",
+									"    \"properties\": {",
+									"        \"_id\": { \"type\": \"string\" },",
+									"        \"_rev\": { \"type\": \"string\" },",
+									"        \"clusters\": { \"type\": \"array\",",
+									"            \"items\": { \"type\": \"array\",",
+									"                \"items\": { \"type\": \"object\",",
+									"                    \"properties\": {",
+									"                        \"host\": {",
+									"                            \"type\": \"string\"",
+									"                        }",
+									"                    }",
+									"                }",
+									"            }",
+									"        },",
+									"    },",
+									"    \"required\": [\"_id\", \"_rev\", \"clusters\"],",
+									"    \"additionalProperties\": false",
+									"}",
+									"",
+									"pm.test('Schema is valid', function() {",
+									"  pm.response.to.have.jsonSchema(edgeServersSchema)",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{infoUrl}}/syncServers",
+							"host": ["{{infoUrl}}"],
+							"path": ["syncServers"]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [""]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Rainy Day",
+			"item": [
+				{
+					"name": "200",
+					"item": [
+						{
+							"name": "airbitzChainChoice/:apiKey=badCode",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Bad params test\", function () {",
+											"    pm.response.to.have.body('');",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/airbitzChainChoice/{{badCode}}",
+									"host": ["{{infoUrl}}"],
+									"path": ["airbitzChainChoice", "{{badCode}}"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "airbitzCurrencyInfo/:currencyCode=badCode",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const badCode = pm.collectionVariables.get(\"badCode\")",
+											"",
+											"pm.test(\"Empty params test\", function () {",
+											"    pm.response.to.have.body(`\"Unable to find airbitzCurrencyInfo ${badCode}\"`);",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/airbitzCurrencyInfo/{{badCode}}",
+									"host": ["{{infoUrl}}"],
+									"path": ["airbitzCurrencyInfo", "{{badCode}}"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "appIdInfo/:appId=badCode",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const badCode = pm.collectionVariables.get(\"badCode\");",
+											"",
+											"pm.test(\"Bad code test\", function () {",
+											"    pm.response.to.have.body(`\"Unable to find app id ${badCode}\"`);",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/appIdInfo/{{badCode}}",
+									"host": ["{{infoUrl}}"],
+									"path": ["appIdInfo", "{{badCode}}"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "blockBook/:currencyCode",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const badCode = pm.collectionVariables.get(\"badCode\");",
+											"",
+											"pm.test(\"Bad code test\", function () {",
+											"    pm.response.to.have.body(`\"Unable to find blockBook for ${badCode}\"`);",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/blockBook/{{badCode}}",
+									"host": ["{{infoUrl}}"],
+									"path": ["blockBook", "{{badCode}}"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "currencyInfo/:currencyCode=badCode",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const badCode = pm.collectionVariables.get(\"badCode\");",
+											"",
+											"pm.test(\"Bad code test\", function () {",
+											"    pm.response.to.have.body(`\"Unable to find currencyInfo ${badCode}\"`);",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/currencyInfo/{{badCode}}",
+									"host": ["{{infoUrl}}"],
+									"path": ["currencyInfo", "{{badCode}}"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "electrumServers/:currencyCode=badCode",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const badCode = pm.collectionVariables.get(\"badCode\")",
+											"",
+											"pm.test(\"Empty params test\", function () {",
+											"    pm.response.to.have.body(`\"Unable to find electrumServers ${badCode}\"`);",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/electrumServers/{{badCode}}",
+									"host": ["{{infoUrl}}"],
+									"path": ["electrumServers", "{{badCode}}"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getLogs/:timestamp=badCode",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const eosPricesSchema = {",
+											"    \"type\": \"object\",",
+											"    \"properties\": {",
+											"        \"message\": { \"type\": \"string\" },",
+											"        \"stack\": { \"type\": \"string\" },",
+											"        \"name\": { \"type\": \"string\" },",
+											"        \"error\": { \"type\": \"string\" },",
+											"        \"reason\": { \"type\": \"string\" },",
+											"        \"scope\": { \"type\": \"string\" },",
+											"        \"statusCode\": { \"type\": \"number\" },",
+											"        \"request\": { ",
+											"            \"type\": \"object\",",
+											"            \"properties\": {",
+											"                \"method\": { \"type\": \"string\" },",
+											"                \"headers\": { ",
+											"                    \"type\": \"object\",",
+											"                    \"properties\": {",
+											"                        \"content-type\": { \"type\": \"string\"},",
+											"                        \"accept\": { \"type\": \"string\"},",
+											"                    }",
+											"                },",
+											"                \"uri\": { \"type\": \"string\" }",
+											"            }",
+											"        },",
+											"        \"headers\": { ",
+											"            \"type\": \"object\",",
+											"            \"properties\": {",
+											"                \"date\": { \"type\": \"string\" },",
+											"                \"content-type\": { \"type\": \"string\" },",
+											"                \"cache-control\": { \"type\": \"string\" },",
+											"                \"statusCode\": { \"type\": \"number\" },",
+											"                \"uri\": { \"type\": \"string\" },",
+											"            }",
+											"        },",
+											"        \"errid\": { \"type\": \"string\" },",
+											"        \"description\": { \"type\": \"string\" }",
+											"    },",
+											"    \"required\": [\"message\", \"stack\", \"name\", \"error\", \"reason\", \"scope\", \"statusCode\", \"request\", \"headers\", \"errid\", \"description\"],",
+											"    \"additionalProperties\": false",
+											"}",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.response.to.have.jsonSchema(eosPricesSchema)",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/getLogs-qkevjbawkejbksjfbvkJEhrwb/{{badCode}}",
+									"host": ["{{infoUrl}}"],
+									"path": ["getLogs-qkevjbawkejbksjfbvkJEhrwb", "{{badCode}}"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "networkFees/:currencyCode=badCode",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const badCode = pm.collectionVariables.get(\"badCode\")",
+											"",
+											"pm.test(\"Empty params test\", function () {",
+											"    pm.response.to.have.body(`\"Unable to find networkFees for currency ${badCode}\"`);",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/networkFees/{{badCode}}",
+									"host": ["{{infoUrl}}"],
+									"path": ["networkFees", "{{badCode}}"]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [""]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "400",
+					"item": [
+						{
+							"name": "edgeServersInternal/:serverName/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Empty query test\", function () {",
+											"    pm.response.to.have.body('Missing Request fields.');",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/edgeServersInternal/loginServers/",
+									"host": ["{{infoUrl}}"],
+									"path": ["edgeServersInternal", "loginServers", ""]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edgeServersInternal/:serverName=badCode",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const badCode = pm.collectionVariables.get(\"badCode\")",
+											"",
+											"pm.test(\"Bad Param test\", function () {",
+											"    pm.response.to.have.body(`Server name ${badCode} could not be found.`);",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/edgeServersInternal/{{badCode}}/?apiKey='1234'",
+									"host": ["{{infoUrl}}"],
+									"path": ["edgeServersInternal", "{{badCode}}", ""],
+									"query": [
+										{
+											"key": "apiKey",
+											"value": "'1234'"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edgeServersInternal/:serverName/query=badCode",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Bad api key test\", function () {",
+											"    pm.response.to.have.body(\"API Key does not match loginServers's API Key.\")",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/edgeServersInternal/loginServers/?apiKey={{badCode}}",
+									"host": ["{{infoUrl}}"],
+									"path": ["edgeServersInternal", "loginServers", ""],
+									"query": [
+										{
+											"key": "apiKey",
+											"value": "{{badCode}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "exchangeRate/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const schema = {",
+											"    \"type\": \"object\",",
+											"    \"properties\": {",
+											"        \"error\": { \"type\": \"string\" }",
+											"    },",
+											"    \"required\": [\"error\"],",
+											"    \"additionalProperties\": false",
+											"}",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.response.to.have.jsonSchema(schema)",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/exchangeRate/",
+									"host": ["{{infoUrl}}"],
+									"path": ["exchangeRate", ""]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "exchangeRate/currency_pair=badCode&date=badCode",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const schema = {",
+											"    \"type\": \"object\",",
+											"    \"properties\": {",
+											"        \"error\": { \"type\": \"string\" }",
+											"    },",
+											"    \"required\": [\"error\"],",
+											"    \"additionalProperties\": false",
+											"}",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.response.to.have.jsonSchema(schema)",
+											"})",
+											"pm.test('Error response test', function() {",
+											"    pm.expect(pm.response.json().error).to.eql(\"currency_pair query param malformed.  should be [curA]_[curB], ex: \\\"ETH_USD\\\"\")",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/exchangeRate/?currency_pair={{badCode}}&date={{badCode}}",
+									"host": ["{{infoUrl}}"],
+									"path": ["exchangeRate", ""],
+									"query": [
+										{
+											"key": "currency_pair",
+											"value": "{{badCode}}"
+										},
+										{
+											"key": "date",
+											"value": "{{badCode}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "exchangeRate/currency_pair=BTC_ETH&date=badCode",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const schema = {",
+											"    \"type\": \"object\",",
+											"    \"properties\": {",
+											"        \"error\": { \"type\": \"string\" }",
+											"    },",
+											"    \"required\": [\"error\"],",
+											"    \"additionalProperties\": false",
+											"}",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.response.to.have.jsonSchema(schema)",
+											"})",
+											"pm.test('Error response test', function() {",
+											"    pm.expect(pm.response.json().error).to.eql(\"date query param malformed.  should be conventional date string, ex:\\\"2019-11-21T15:28:21.123Z\\\"\")",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/exchangeRate/?currency_pair=BTC_ETH&date={{badCode}}",
+									"host": ["{{infoUrl}}"],
+									"path": ["exchangeRate", ""],
+									"query": [
+										{
+											"key": "currency_pair",
+											"value": "BTC_ETH"
+										},
+										{
+											"key": "date",
+											"value": "{{badCode}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "exchangeRate/currency_pair=BTC_ETH&date=01-01-40",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const schema = {",
+											"    \"type\": \"object\",",
+											"    \"properties\": {",
+											"        \"error\": { \"type\": \"string\" }",
+											"    },",
+											"    \"required\": [\"error\"],",
+											"    \"additionalProperties\": false",
+											"}",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.response.to.have.jsonSchema(schema)",
+											"})",
+											"pm.test('Error response test', function() {",
+											"    pm.expect(pm.response.json().error).to.eql(\"Future date received. Must send past date.\")",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/exchangeRate/?currency_pair=BTC_ETH&date=01-01-40",
+									"host": ["{{infoUrl}}"],
+									"path": ["exchangeRate", ""],
+									"query": [
+										{
+											"key": "currency_pair",
+											"value": "BTC_ETH"
+										},
+										{
+											"key": "date",
+											"value": "01-01-40"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "metaTokens/:chainCode=badCode/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const badCode = pm.collectionVariables.get(\"badCode\")",
+											"",
+											"pm.test(\"Empty params test\", function () {",
+											"    pm.response.to.have.body(`\"Unknown Meta Token: ${badCode}/undefined\"`)",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/metaTokens/{{badCode}}/",
+									"host": ["{{infoUrl}}"],
+									"path": ["metaTokens", "{{badCode}}", ""]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "metaTokens/:chainCode=ETH/:tokenCode=badCode",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const badCode = pm.collectionVariables.get(\"badCode\")",
+											"",
+											"pm.test(\"Bad params test\", function () {",
+											"    pm.response.to.have.body(`\"Unknown Meta Token: eth/${badCode}\"`);",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/metaTokens/eth/{{badCode}}",
+									"host": ["{{infoUrl}}"],
+									"path": ["metaTokens", "eth", "{{badCode}}"]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [""]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(400);",
+									"})"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "404",
+					"item": [
+						{
+							"name": "airbitzChainChoice/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Empty params test\", function () {",
+											"    pm.response.to.have.body('Cannot GET /v1/airbitzChainChoice/\\n');",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/airbitzChainChoice/",
+									"host": ["{{infoUrl}}"],
+									"path": ["airbitzChainChoice", ""]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "airbitzCurrencyInfo/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Empty params test\", function () {",
+											"    pm.response.to.have.body('Cannot GET /v1/airbitzCurrencyInfo/\\n');",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/airbitzCurrencyInfo/",
+									"host": ["{{infoUrl}}"],
+									"path": ["airbitzCurrencyInfo", ""]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getLogs/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Empty params test\", function () {",
+											"    pm.response.to.have.body('Cannot GET /v1/getLogs-qkevjbawkejbksjfbvkJEhrwb/\\n')",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/getLogs-qkevjbawkejbksjfbvkJEhrwb/",
+									"host": ["{{infoUrl}}"],
+									"path": ["getLogs-qkevjbawkejbksjfbvkJEhrwb", ""]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edgeServersInternal/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Empty params test\", function () {",
+											"    pm.response.to.have.body('Cannot GET /v1/edgeServersInternal/\\n');",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/edgeServersInternal/",
+									"host": ["{{infoUrl}}"],
+									"path": ["edgeServersInternal", ""]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edgeServersInternal/:serverName/badCode",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const badCode = pm.collectionVariables.get(\"badCode\")",
+											"",
+											"pm.test(\"Bad query format test\", function () {",
+											"    pm.response.to.have.body(`Cannot GET /v1/edgeServersInternal/loginServers/${badCode}\\n`);",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/edgeServersInternal/loginServers/{{badCode}}",
+									"host": ["{{infoUrl}}"],
+									"path": ["edgeServersInternal", "loginServers", "{{badCode}}"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "currencyInfo/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Empty params test\", function () {",
+											"    pm.response.to.have.body('Cannot GET /v1/currencyInfo/\\n');",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/currencyInfo/",
+									"host": ["{{infoUrl}}"],
+									"path": ["currencyInfo", ""]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "electrumServers/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Empty params test\", function () {",
+											"    pm.response.to.have.body('Cannot GET /v1/electrumServers/\\n');",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/electrumServers/",
+									"host": ["{{infoUrl}}"],
+									"path": ["electrumServers", ""]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "networkFees/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Empty params test\", function () {",
+											"    pm.response.to.have.body('Cannot GET /v1/networkFees/\\n');",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/networkFees/",
+									"host": ["{{infoUrl}}"],
+									"path": ["networkFees", ""]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "metaTokens/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Empty params test\", function () {",
+											"    pm.response.to.have.body('Cannot GET /v1/metaTokens/\\n');",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/metaTokens/",
+									"host": ["{{infoUrl}}"],
+									"path": ["metaTokens", ""]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [""]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(404);",
+									"})"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "500",
+					"item": [
+						{
+							"name": "exchangeRate/currency_pair=BTC_ETH&date=01-01-01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const schema = {",
+											"    \"type\": \"object\",",
+											"    \"properties\": {",
+											"        \"error\": { \"type\": \"string\" }",
+											"    },",
+											"    \"required\": [\"error\"],",
+											"    \"additionalProperties\": false",
+											"}",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.response.to.have.jsonSchema(schema)",
+											"})",
+											"pm.test('Error response test', function() {",
+											"    pm.expect(pm.response.json().error).to.eql(\"All lookups failed to find rate\")",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{infoUrl}}/exchangeRate/?currency_pair=BTC_ETH&date=01-01-01",
+									"host": ["{{infoUrl}}"],
+									"path": ["exchangeRate", ""],
+									"query": [
+										{
+											"key": "currency_pair",
+											"value": "BTC_ETH"
+										},
+										{
+											"key": "date",
+											"value": "01-01-01"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [""]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(500);",
+									"})"
+								]
+							}
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [""]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [""]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [""]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [""]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "badCode",
+			"value": "aibgalkdjbfalskjdn"
+		}
+	]
 }
